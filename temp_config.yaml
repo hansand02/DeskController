@@ -1,0 +1,10 @@
+mac_address: EDFDE11B-C1CF-85DB-B2C0-A1CD7B3CB147
+scan_timeout: 5
+connection_timeout: 10
+adapter_name: hci0
+server_address: "127.0.0.1"
+server_port: 9123
+favourites:
+  sit: 683
+  stand: 1040
+  dion: 750
