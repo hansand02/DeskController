@@ -24,3 +24,7 @@ Connection failed:
 * Try increasing the scan-timeout and connection-timeout.
 * Close bluetility, or other bluetooth development software.
 * Close the --server, if you have it running in the background and you are not using the --forward flag
+
+[Errno 48] error while attempting to bind on address
+* `lsof -i :9123`, replace 9123 with the port you are using. Find PID of process
+* `kill -9 <PID>`
