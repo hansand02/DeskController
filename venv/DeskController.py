@@ -7,6 +7,9 @@ class DeskController:
     def __init__(self):
         self.start_server()
 
+    def terminal_countdown(self, seconds:int):
+        subprocess.run(["countdown", f'{str(seconds)}s' ])
+
     def move_to_position(self, position):
         try:
             subprocess.run(["linak-controller", f"--move-to", str(position), "--forward"])
@@ -15,8 +18,7 @@ class DeskController:
 
     def start_server(self):
         try:
-            stuff = subprocess.Popen(["linak-controller", "--server", "--server-address", SERVER_ADDRESS, "--server_port", SERVER_PORT, "--config", '../temp_config.yaml' ])
-            print("well well", stuff)
+            subprocess.Popen(["linak-controller", "--server", "--server-address", SERVER_ADDRESS, "--server_port", SERVER_PORT, "--config", '../temp_config.yaml' ])
         except OSError as error:
             print(f'Error happened while starting the local server, with error code: {error}')
 
@@ -38,5 +40,6 @@ class DeskController:
             return int(height_value.removesuffix('mm'))
         except subprocess.CalledProcessError as error:
             print(f'An error occured during retrieval of the desk height, check your connection. Error: {error}')
+    
     def __del__(self):
         self.kill_old_server()
