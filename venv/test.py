@@ -13,14 +13,14 @@ def pomodoro_timer(controller: DeskController, sessions: int, firstType: str = '
     if firstType not in ['stand', 'sit']:
         raise ValueError("firstType must be either 'stand' or 'sit'")
     
-    sitting_time = 25*60
-    pause_time = 5*60
+    working_time = "25m"
+    pause_time = "5m"
     positions = ['stand', 'sit'] if firstType == 'stand' else ['sit', 'stand']
     for i in range(sessions):
         nextMove = positions[i%2]
         print("Moving to", nextMove)
         controller.move_to_position(nextMove)
-        controller.terminal_countdown(sitting_time)
+        controller.terminal_countdown(working_time)
 
         controller.move_to_position('pause')
         controller.terminal_countdown(pause_time)

@@ -7,8 +7,13 @@ class DeskController:
     def __init__(self):
         self.start_server()
 
-    def terminal_countdown(self, seconds:int):
-        subprocess.run(["countdown", f'{str(seconds)}s' ])
+    def terminal_countdown(self, time:str):
+        """ runs countdown package
+            use time string of format xxmxxs
+            both minutes and seconds can be omitted
+            max value of 60 on both
+           """
+        subprocess.run(["countdown", time ])
 
     def move_to_position(self, position):
         try:
